@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^1.2.0",
+    "@material-ui/icons": "^1.1.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-router-dom": "^4.2.2",
     "react-scripts-ts": "2.16.0",
-    "redux-form": "^7.3.0"
+    "redux-form": "^7.3.0",
+    "typeface-roboto": "0.0.54"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
+    "start": "PORT=4000 react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"

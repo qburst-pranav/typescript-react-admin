@@ -1,7 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import 'typeface-roboto';
+
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
+
+import './index.css';
 
 ReactDOM.render(
   <App />,
