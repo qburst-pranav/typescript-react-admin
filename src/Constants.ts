@@ -16,6 +16,10 @@ export const MENUS = {
                 {
                     key: 'product_search_l3',
                     name: 'L3'
+                },
+                {
+                    key: 'product_details',
+                    name: 'Product Details'
                 }
             ]
         },

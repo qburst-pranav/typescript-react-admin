@@ -9,6 +9,8 @@ import {
 } from "@material-ui/core/styles";
 import * as React from "react";
 
+import { ILeftDrawerSubMenuItem } from "../store/leftDrawer/types";
+
 const styles = (theme: Theme) =>
   createStyles({
     inset: {
@@ -19,13 +21,8 @@ const styles = (theme: Theme) =>
     }
   });
 
-export interface ISubMenuItem {
-  key: string;
-  name: string;
-}
-
 interface IProps extends WithStyles<typeof styles> {
-  subMenus: ISubMenuItem[];
+  subMenus: ILeftDrawerSubMenuItem[];
 }
 
 function DrawerSubMenu({ classes, subMenus }: IProps): JSX.Element {
@@ -33,7 +30,7 @@ function DrawerSubMenu({ classes, subMenus }: IProps): JSX.Element {
     <List>
       {subMenus.map(({ key, name }) => (
         <ListItem key={key}>
-          <ListItemText inset={true} primary={name} className={classes.inset}/>
+          <ListItemText inset={true} primary={name} className={classes.inset} />
         </ListItem>
       ))}
     </List>
