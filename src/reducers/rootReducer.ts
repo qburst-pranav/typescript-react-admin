@@ -1,7 +1,7 @@
 import { combineReducers, Reducer } from 'redux';
 
-import { leftDrawerReducer } from './leftDrawer/reducer';
-import { ILeftDrawerState } from "./leftDrawer/types";
+import { ILeftDrawerState } from "../types/leftDrawer";
+import { leftDrawerReducer } from './leftDrawer';
 
 export interface IApplicationState {
     leftDrawer: ILeftDrawerState;

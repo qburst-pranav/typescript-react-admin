@@ -4,9 +4,12 @@ import {
   withStyles,
   WithStyles
 } from "@material-ui/core/styles";
-import Typography from '@material-ui/core/Typography';
+import Typography from "@material-ui/core/Typography";
 import * as React from "react";
 
+import { MENUS } from "../Constants";
+import { ConnectedProps } from "../containers/MainContainer";
+import { ILeftDrawerMenuItem } from "../types/leftDrawer";
 import LeftDrawer from "./LeftDrawer";
 
 const styles = (theme: Theme) =>
@@ -26,19 +29,34 @@ const styles = (theme: Theme) =>
     }
   });
 
-interface IProps extends WithStyles<typeof styles> {}
+interface IComponentProps extends WithStyles<typeof styles> {}
 
-class Main extends React.Component<IProps> {
-  componentDidMount(){
-    const { initLeftDrawer, leftDrawer } = this.props; 
-    initLeftDrawer(leftDrawer.menus);
+type Props = IComponentProps & ConnectedProps;
+
+class Main extends React.Component<Props> {
+  constructor(props: Props) {
+    super(props);
+    this.handleMenuSelect = this.handleMenuSelect.bind(this);
+  }
+
+  componentDidMount() {
+    const { initLeftDrawer }: Props = this.props;
+    initLeftDrawer(MENUS.LEFT_DRAWER);
+  }
+
+  handleMenuSelect(selected: ILeftDrawerMenuItem) {
+    const { selectLeftDrawerMenu }: Props = this.props;
+    selectLeftDrawerMenu(selected);
   }
 
   render() {
-    const { classes } = this.props;
+    const {
+      classes,
+      leftDrawer: { menus }
+    }: Props = this.props;
     return (
       <div className={classes.root}>
-        <LeftDrawer />
+        <LeftDrawer menus={menus} onMenuSelect={this.handleMenuSelect} />
         <main className={classes.content}>
           <Typography noWrap={true}>
             {"You think water moves fast? You should see ice."}

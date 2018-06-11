@@ -9,15 +9,17 @@ import {
 } from "@material-ui/core/styles";
 import * as React from "react";
 
-import { ILeftDrawerSubMenuItem } from "../store/leftDrawer/types";
+import { ILeftDrawerSubMenuItem } from "../types/leftDrawer";
 
 const styles = (theme: Theme) =>
   createStyles({
     inset: {
-      paddingLeft: theme.spacing.unit * 3
+      "&:first-child": {
+        paddingLeft: theme.spacing.unit * 2
+      }
     },
-    subMenuItem: {
-      fontSize: "0.9em"
+    primary: {
+      fontSize: '0.8em'
     }
   });
 
@@ -30,7 +32,14 @@ function DrawerSubMenu({ classes, subMenus }: IProps): JSX.Element {
     <List>
       {subMenus.map(({ key, name }) => (
         <ListItem key={key}>
-          <ListItemText inset={true} primary={name} className={classes.inset} />
+          <ListItemText
+            inset={true}
+            primary={name}
+            classes={{
+              inset: classes.inset,
+              primary: classes.primary
+            }}
+          />
         </ListItem>
       ))}
     </List>

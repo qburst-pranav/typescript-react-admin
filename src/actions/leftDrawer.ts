@@ -6,7 +6,7 @@ import {
   ILeftDrawerMenuSelectAction,
   LEFT_DRAWER_INIT,
   LEFT_DRAWER_SELECT_MENU
-} from "./types";
+} from "../types/leftDrawer";
 
 export const initLeftDrawerMenu: ActionCreator<ILeftDrawerInitAction> = (
   menus: ILeftDrawerMenuItem[]

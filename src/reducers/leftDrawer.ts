@@ -5,7 +5,7 @@ import {
   LEFT_DRAWER_INIT,
   LEFT_DRAWER_SELECT_MENU,
   LeftDrawerActions
-} from "./types";
+} from "../types/leftDrawer";
 
 const initialState: ILeftDrawerState = {
   menus: [],

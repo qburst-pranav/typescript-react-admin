@@ -1,16 +1,41 @@
 import { connect, Dispatch } from "react-redux";
 
+import {
+  initLeftDrawerMenu,
+  selectLeftDrawerMenu
+} from "../actions/leftDrawer";
 import Main from "../components/Main";
-import { IApplicationState } from "../store/index";
+import { IApplicationState } from "../reducers/rootReducer";
+import {
+  ILeftDrawerMenuItem,
+  ILeftDrawerState
+} from "../types/leftDrawer";
 
-const mapStateToProps = (state: IApplicationState) => ({
+interface IStateProps {
+  leftDrawer: ILeftDrawerState;
+}
+
+interface IDispatchProps {
+  initLeftDrawer: (menus: ILeftDrawerMenuItem[]) => void;
+  selectLeftDrawerMenu: (selected: ILeftDrawerMenuItem) => void;
+}
+
+export type ConnectedProps = IStateProps & IDispatchProps;
+
+const mapStateToProps = (state: IApplicationState): IStateProps => ({
   leftDrawer: state.leftDrawer
 });
 
-export interface IConnectedMainProps<S> {
-    dispatch: Dispatch<S>;
-} 
+const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
+  initLeftDrawer: (menus: ILeftDrawerMenuItem[]) => {
+    dispatch(initLeftDrawerMenu(menus));
+  },
+  selectLeftDrawerMenu: (selected: ILeftDrawerMenuItem) => {
+    dispatch(selectLeftDrawerMenu(selected));
+  }
+});
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Main);
